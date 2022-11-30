@@ -88,7 +88,10 @@ public:
     {
         if (CheckTopRow() == colMax)
         {
+            printDisplayMatrix();
+            cout << "\n============================\n";
             cout << "It is a tie!" << '\n';
+            cout << "\n============================\n";
             gameCheck = false;
         }
     }
@@ -321,7 +324,7 @@ public:
 
             turnCounter++;
 
-            if (turnCounter > rowValueMax * colValueMax && startGame)
+            if (turnCounter >= rowValueMax * colValueMax && startGame)
             {
                 board->tieCheck(startGame);
             }
