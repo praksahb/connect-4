@@ -23,9 +23,7 @@ class GameBoard
     int colMax;
 
 public:
-    GameBoard(int row, int col)
-        : board(row, vector<char>(col, ' ')), colMap(col, row - 1), rowMax(row),
-          colMax(col) {}
+    GameBoard(int row, int col) : board(row, vector<char>(col, ' ')), colMap(col, row - 1), rowMax(row), colMax(col) {}
     ~GameBoard() {}
 
     const int getColMax() { return colMax; }
@@ -141,15 +139,6 @@ private:
             colMap[colVal]--;
         }
         return rowVal;
-    }
-
-    int HorCheck(int row, int col, char val)
-    {
-
-        if (board[row][col] != val)
-        {
-            return 0;
-        }
     }
 
     int HorizontalCheck(int row, int col)
