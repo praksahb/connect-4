@@ -137,8 +137,8 @@ private:
 
     int FillBoard(int colVal, const char &charVal)
     {
-        // columnMap stores the count of rowMax - 1
-        // every turn it reduces by one which makes it to start filling upwards
+        // columnMap [col. no] starts from a value = count of rowMax - 1 ( which is the height of each column)
+        // after every fill it reduces by one which makes then start filling upwards
         int rowVal = columnMap[colVal];
 
         if (rowVal != -1)
