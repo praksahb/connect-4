@@ -17,13 +17,17 @@ public:
 
 class GameBoard
 {
+    /*
+        char board name = DisplayBoard
+        int board name = 
+    */
     vector<vector<char>> board;
-    vector<int> colMap;
+    vector<int> columnMap;
     int rowMax;
     int colMax;
 
 public:
-    GameBoard(int row, int col) : board(row, vector<char>(col, ' ')), colMap(col, row - 1), rowMax(row), colMax(col) {}
+    GameBoard(int row, int col) : board(row, vector<char>(col, ' ')), columnMap(col, row - 1), rowMax(row), colMax(col) {}
     ~GameBoard() {}
 
     const int getColMax() { return colMax; }
@@ -133,13 +137,14 @@ private:
 
     int FillBoard(int colVal, const char &charVal)
     {
-        // access time - O(1)
-        int rowVal = colMap[colVal];
+        // columnMap stores the count of rowMax - 1
+        // every turn it reduces by one which makes it to start filling upwards
+        int rowVal = columnMap[colVal];
 
         if (rowVal != -1)
         {
             board[rowVal][colVal] = charVal;
-            colMap[colVal]--;
+            columnMap[colVal]--;
         }
         return rowVal;
     }
@@ -308,11 +313,8 @@ public:
 
         while (startGame)
         {
-            // n^2 Time
             board->printDisplayMatrix();
 
-            // T - O(m*n)
-            // S - O(m*n)
             if (turnCounter % 2 == 0)
             {
                 PlayTurn(red, startGame);
